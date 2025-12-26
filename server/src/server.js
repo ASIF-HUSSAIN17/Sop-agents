@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const ingestRoutes = require('./routes/ingestRoutes');
+const queryRoutes = require('./routes/queryRoutes');
 
 // Connect to Database
 if (process.env.MONGODB_URI && process.env.MONGODB_URI !== 'your_mongodb_connection_string') {
@@ -22,6 +23,7 @@ app.get('/', (req, res) => {
 
 // Routes
 app.use('/api', ingestRoutes);
+app.use('/api', queryRoutes);
 
 const PORT = process.env.PORT || 5000;
 
